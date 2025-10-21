@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soul Yatri - Spiritual Journeys</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/intro.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    <!-- Intro Screen -->
+    <section id="intro-screen" class="intro-screen">
+        <div class="circles-container">
+            <div class="circle circle-1"></div>
+            <div class="circle circle-2"></div>
+            <div class="circle circle-3"></div>
+            <div class="circle circle-4"></div>
+        </div>
+        <div class="intro-content">
+            <p class="intro-subtitle">Tap To Experience</p>
+            <h1 class="intro-title">Soul Yatri</h1>
+        </div>
+    </section>
+
+    <!-- Main Landing Page -->
+    <main id="main-content" class="main-content hidden">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="logo-container">
+                <img src="assets/images/Logo1.png" alt="Soul Yatri" class="logo-img">
+            </div>
+            <div class="menu-toggle" id="menuToggle">
+                <span class="menu-text">MENU</span>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Section 1: Hero -->
+        <section class="section hero-section" id="section1">
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-line"></div>
+                <div class="progress-indicator active"></div>
+                <div class="progress-indicator"></div>
+                <div class="progress-indicator"></div>
+            </div>
+
+            <div class="hero-content">
+                <p class="hero-description">
+                    Soul Yatri is your companion in healing & self-discovery.<br>
+                    We blend mental health support, energy healing & psychology to nurture balance in life.<br>
+                    Start healing within guided by care, science & soul.
+                </p>
+                
+                <h2 class="hero-subtitle">Begin Your Soul & Mind</h2>
+                <h1 class="hero-title">Healing Journey</h1>
+                
+                <button class="cta-button">Get Healed</button>
+            </div>
+            
+            <div class="hero-image">
+                <img src="assets/images/Meditation.png" alt="Monk in meditation" class="monk-image">
+            </div>
+        </section>
+
+        <!-- Section 2: Healing Options (1-2-1-2-1 Pattern with 7 Circles) -->
+        <section class="section options-section" id="section2">
+            <div class="enter-content">
+                <h2 class="enter-title">Enter To The Healing Area</h2>
+                <p class="enter-subtitle">Find the Peace your Soul & Body needs.</p>
+            </div>
+
+            <div class="options-pyramid">
+                <!-- Row 1: Single circle -->
+                <div class="pyramid-row row-1">
+                    <div class="healing-option floating-slow" data-healing="meditation">
+                        <div class="circle-glow"></div>
+                        <div class="icon-wrapper">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        <h3>Meditation</h3>
+                    </div>
+                </div>
+                
+                <!-- Row 2: Two circles -->
+                <div class="pyramid-row row-2">
+                    <div class="healing-option floating-medium" data-healing="breathwork">
+                        <div class="circle-glow"></div>
+                        <div class="icon-wrapper">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <h3>Breathwork</h3>
+                    </div>
+                    <div class="healing-option floating-fast" data-healing="emotional">
+                        <div class="circle-glow"></div>
+                        <div class="icon-wrapper">
+                            <i class="fas fa-heart-pulse"></i>
+                        </div>
+                        <h3>Emotional Healing</h3>
+                    </div>
+                </div>
+                
+                <!-- Row 3: Single circle (Center) -->
+                <div class="pyramid-row row-3">
+                    <div class="healing-option floating-slow center" data-healing="stress">
+                        <div class="circle-glow"></div>
+                        <div class="icon-wrapper">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Stress Management</h3>
+                    </div>
+                </div>
+                
+                <!-- Row 4: Two circles -->
+                <div class="pyramid-row row-4">
+                    <div class="healing-option floating-medium" data-healing="psychology">
+                        <div class="circle-glow"></div>
+                        <div class="icon-wrapper">
+                            <i class="fas fa-user-doctor"></i>
+                        </div>
+                        <h3>Psychology</h3>
+                    </div>
+                    <div class="healing-option floating-fast" data-healing="anxiety">
+                        <div class="circle-glow"></div>
+                        <div class="icon-wrapper">
+                            <i class="fas fa-shield-heart"></i>
+                        </div>
+                        <h3>Anxiety Management</h3>
+                    </div>
+                </div>
+                
+                <!-- Row 5: Single circle -->
+                <div class="pyramid-row row-5">
+                    <div class="healing-option floating-slow" data-healing="astrology">
+                        <div class="circle-glow"></div>
+                        <div class="icon-wrapper">
+                            <i class="fas fa-moon"></i>
+                        </div>
+                        <h3>Astrology</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: AI Soul Mate -->
+        <section class="section chat-section" id="section3">
+            <div class="chat-header">
+                <h2>Get your AI Soul Mate to talk</h2>
+                <p>Make this AI Soul Mate your Best Friend.</p>
+            </div>
+
+            <div class="chat-container">
+                <div class="chat-message ai">
+                    <div class="avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <span class="sender">AI Soul Buddy</span>
+                        <p>Hi Bro! How are you? Let's know about you; Let's start with your Name...</p>
+                    </div>
+                </div>
+
+                <div class="chat-message user">
+                    <div class="avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="message-content">
+                        <span class="sender">You</span>
+                        <p>Hi Bro! I'm fine. My name is Dhruv Paleja. AI Buddy can I keep name for you? How is Tom or Jerry which you will the most?</p>
+                    </div>
+                </div>
+
+                <div class="chat-message ai">
+                    <div class="avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <span class="sender">AI Soul Buddy</span>
+                        <p>Tom sounds good! You are my Jerry. The unbreakable friendship. Hehehe...</p>
+                    </div>
+                </div>
+
+                <div class="chat-message user">
+                    <div class="avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="message-content">
+                        <span class="sender">You</span>
+                        <p>Ha ha ha ha! Please help me Tom from my stress. I can't able to focus on studies for the pressure of the exams.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Testimonials -->
+        <section class="section testimonials-section" id="section4">
+            <div class="testimonials-header">
+                <h2>What our Users say about Soul Yatri</h2>
+                <p>This is the Testimonials from the users.</p>
+                <button class="read-more">Read More</button>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3>Dhruv Paleja</h3>
+                    <div class="stars">★★★★★</div>
+                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit"</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3>Tom Cruise</h3>
+                    <div class="stars">★★★★★</div>
+                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit"</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3>James Bond</h3>
+                    <div class="stars">★★★★★</div>
+                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit"</p>
+                </div>
+            </div>
+        </section>
+ <!-- Section 5: Footer -->
+        <footer class="footer-section">
+            <div class="footer-main">
+                <div class="footer-container">
+                    <!-- Column 1: Brand & Description -->
+                    <div class="footer-column brand-column">
+                        <h2 class="footer-brand">Soul Yatri</h2>
+                        <p class="footer-description">
+                            Soul Yatri is a blend mental health support, energy healing, psychology & astology to nurture balance in life. Start healing within guided by care, science & soul.
+                        </p>
+                    </div>
+
+                    <!-- Column 2: Our Contents -->
+                    <div class="footer-column">
+                        <h3 class="footer-title">Our Contents</h3>
+                        <ul class="footer-links">
+                            <li><a href="#meditation">Meditation</a></li>
+                            <li><a href="#breathwork">Breathwork</a></li>
+                            <li><a href="#emotional">Emotional Healing</a></li>
+                            <li><a href="#stress">Stress Management</a></li>
+                            <li><a href="#anxiety">Anxiety Management</a></li>
+                            <li><a href="#psychology">Psychology</a></li>
+                            <li><a href="#astrology">Astrology</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 3: Our Support -->
+                    <div class="footer-column">
+                        <h3 class="footer-title">Our Support</h3>
+                        <ul class="footer-links">
+                            <li><a href="#help">Help</a></li>
+                            <li><a href="#contact">Contact Us</a></li>
+                            <li><a href="#resources">Mental Health Resources</a></li>
+                            <li><a href="#astrology-support">Astrology</a></li>
+                            <li><a href="#psychology-support">Psychological Support</a></li>
+                            <li><a href="#privacy">Security & Privacy</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 4: My Soul Yatri & Email Signup -->
+                    <div class="footer-column signup-column">
+                        <h3 class="footer-title">My Soul Yatri</h3>
+                        <ul class="footer-links">
+                            <li><a href="#login">Log In</a></li>
+                            <li><a href="#signup">Sign Up</a></li>
+                        </ul>
+                        
+                        <!-- Email Signup Form -->
+                        <div class="email-signup">
+                            <div class="email-input-wrapper">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" placeholder="Enter Your Email" class="email-input">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>Soul Yatri © 2025 — A space where healing meets technology.</p>
+            </div>
+        </footer>
+    </main>
+    
+
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="assets/js/intro.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
