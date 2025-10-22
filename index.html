@@ -10,6 +10,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;400;500;600&display=swap" rel="stylesheet">
     
+    <!-- iOS Audio Support -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
@@ -308,10 +312,17 @@
         </footer>
     </main>
        <!-- Background Music -->
-    <audio id="backgroundMusic" loop>
-        <source src="assets/audio/relaxing-music-vol1-124477-1.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+<!-- Background Music with ALL mobile attributes -->
+<audio id="backgroundMusic" 
+       loop 
+       preload="auto" 
+       playsinline 
+       webkit-playsinline
+       x-webkit-airplay="allow">
+    <source src="assets/audio/relaxing-music-vol1-124477-1.mp3" type="audio/mpeg">
+    <source src="assets/audio/relaxing-music-vol1-124477-1.ogg" type="audio/ogg">
+    Your browser does not support the audio element.
+</audio>
 
     <!-- Music Controls (after audio element) -->
 <!-- <div class="music-controls" id="musicControls" style="display: none;">

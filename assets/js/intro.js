@@ -8,6 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Prevent scrolling during intro
     document.body.style.overflow = 'hidden';
 
+    // Mobile audio unlock - create audio context on first touch
+    let audioContext;
+    let audioSource;
+    let gainNode;
+    let audioUnlocked = false;
+
     // Configure GSAP for performance
     gsap.config({
         force3D: true,
@@ -57,28 +63,98 @@ document.addEventListener('DOMContentLoaded', () => {
         ease: 'power1.inOut'
     });
 
-    // Mobile-friendly music playback
-    function playMusicWithFadeIn() {
+    // Unlock audio on first touch (iOS fix)
+    function unlockAudio() {
+        if (audioUnlocked) return;
+        
+        const silentAudio = document.createElement('audio');
+        silentAudio.src = 'data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA';
+        silentAudio.play().then(() => {
+            audioUnlocked = true;
+            console.log('✅ Audio unlocked for mobile');
+        }).catch(() => {
+            console.log('⚠️ Audio unlock failed');
+        });
+    }
+
+    // iOS-specific audio initialization
+    function initMobileAudio() {
+        unlockAudio();
+        
         if (backgroundMusic) {
-            backgroundMusic.volume = 0;
+            // Load audio immediately
+            backgroundMusic.load();
             
-            // IMPORTANT: Play immediately in event handler (no promise)
+            // Try playing muted first (required by iOS)
+            backgroundMusic.muted = true;
+            backgroundMusic.play().then(() => {
+                backgroundMusic.pause();
+                backgroundMusic.muted = false;
+                backgroundMusic.currentTime = 0;
+                console.log('✅ Audio prepared for mobile');
+            }).catch(err => {
+                console.log('⚠️ Audio prep failed:', err);
+            });
+        }
+    }
+
+    // Call on page load
+    initMobileAudio();
+
+    // Mobile-friendly music playback with multiple fallbacks
+    function playMusicWithFadeIn() {
+        if (!backgroundMusic) {
+            console.error('❌ Audio element not found');
+            return;
+        }
+
+        console.log('🎵 Attempting to play music...');
+
+        // Method 1: Direct play (works on most devices)
+        backgroundMusic.volume = 0;
+        backgroundMusic.muted = false;
+        
+        const playAttempt = backgroundMusic.play();
+        
+        if (playAttempt !== undefined) {
+            playAttempt.then(() => {
+                console.log('✅ Music playing successfully');
+                
+                // Fade in volume
+                gsap.to(backgroundMusic, {
+                    volume: 0.25,
+                    duration: 3,
+                    ease: 'power2.inOut'
+                });
+            }).catch(err => {
+                console.error('❌ Playback failed:', err);
+                
+                // Method 2: Retry with user gesture
+                setTimeout(() => {
+                    backgroundMusic.play().then(() => {
+                        gsap.to(backgroundMusic, {
+                            volume: 0.25,
+                            duration: 3,
+                            ease: 'power2.inOut'
+                        });
+                    });
+                }, 100);
+            });
+        } else {
+            // Fallback for older browsers
             backgroundMusic.play();
-            
-            // Then fade in
             gsap.to(backgroundMusic, {
                 volume: 0.25,
                 duration: 3,
                 ease: 'power2.inOut'
             });
-            
-            console.log('✅ Music playing');
         }
     }
 
     // Click/Tap to transition WITH MUSIC
     function handleTransition(e) {
         e.preventDefault();
+        e.stopPropagation();
         
         console.log('🎵 Transition started!');
         
@@ -87,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
         introScreen.removeEventListener('touchstart', handleTransition);
         introScreen.removeEventListener('touchend', handleTransition);
 
-        // PLAY MUSIC IMMEDIATELY (critical for mobile)
+        // PLAY MUSIC IMMEDIATELY (must be synchronous for iOS)
         playMusicWithFadeIn();
 
         // Animation timeline
@@ -146,7 +222,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Add MULTIPLE event listeners for better mobile support
-    introScreen.addEventListener('click', handleTransition);
-    introScreen.addEventListener('touchstart', handleTransition);
-    introScreen.addEventListener('touchend', handleTransition);
+    introScreen.addEventListener('click', handleTransition, { passive: false });
+    introScreen.addEventListener('touchstart', handleTransition, { passive: false });
+    introScreen.addEventListener('touchend', handleTransition, { passive: false });
+    
+    // Also unlock audio on any touch
+    document.body.addEventListener('touchstart', unlockAudio, { once: true, passive: true });
 });
