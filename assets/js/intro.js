@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainContent = document.getElementById('main-content');
     const circles = document.querySelectorAll('.circle');
     const introContent = document.querySelector('.intro-content');
+    const backgroundMusic = document.getElementById('backgroundMusic');
 
     // Prevent scrolling during intro
     document.body.style.overflow = 'hidden';
@@ -56,6 +57,25 @@ document.addEventListener('DOMContentLoaded', () => {
         ease: 'power1.inOut'
     });
 
+    // Mobile-friendly music playback
+    function playMusicWithFadeIn() {
+        if (backgroundMusic) {
+            backgroundMusic.volume = 0;
+            
+            // IMPORTANT: Play immediately in event handler (no promise)
+            backgroundMusic.play();
+            
+            // Then fade in
+            gsap.to(backgroundMusic, {
+                volume: 0.25,
+                duration: 3,
+                ease: 'power2.inOut'
+            });
+            
+            console.log('✅ Music playing');
+        }
+    }
+
     // Click/Tap to transition WITH MUSIC
     function handleTransition(e) {
         e.preventDefault();
@@ -65,37 +85,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Remove event listeners to prevent multiple clicks
         introScreen.removeEventListener('click', handleTransition);
         introScreen.removeEventListener('touchstart', handleTransition);
+        introScreen.removeEventListener('touchend', handleTransition);
 
-// PLAY BACKGROUND MUSIC WITH FADE IN
-const backgroundMusic = document.getElementById('backgroundMusic');
-console.log('Music element found:', backgroundMusic);
-
-if (backgroundMusic) {
-    // Start at volume 0
-    backgroundMusic.volume = 0;
-    
-    // Try to play music
-    const playPromise = backgroundMusic.play();
-    
-    if (playPromise !== undefined) {
-        playPromise
-            .then(() => {
-                console.log('✅ Music is playing!');
-                
-                // Fade in music over 3 seconds using GSAP
-                gsap.to(backgroundMusic, {
-                    volume: 0.2,  // Final volume (25% - gentle and calming)
-                    duration: 3,    // 3 seconds fade in
-                    ease: 'power2.inOut'
-                });
-            })
-            .catch(err => {
-                console.error('❌ Music failed:', err);
-            });
-    }
-} else {
-    console.error('❌ Audio element not found!');
-}
+        // PLAY MUSIC IMMEDIATELY (critical for mobile)
+        playMusicWithFadeIn();
 
         // Animation timeline
         const tl = gsap.timeline({
@@ -152,7 +145,8 @@ if (backgroundMusic) {
         );
     }
 
-    // Add event listeners
+    // Add MULTIPLE event listeners for better mobile support
     introScreen.addEventListener('click', handleTransition);
     introScreen.addEventListener('touchstart', handleTransition);
+    introScreen.addEventListener('touchend', handleTransition);
 });
