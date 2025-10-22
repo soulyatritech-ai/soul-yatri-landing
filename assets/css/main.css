@@ -13,8 +13,9 @@
 }
 
 /* ===== NAVBAR ===== */
+/* Replace the existing .navbar CSS with this */
 .navbar {
-    position: fixed;
+    position: absolute; /* Changed from 'fixed' to 'absolute' */
     top: 0;
     width: 100%;
     display: flex;
